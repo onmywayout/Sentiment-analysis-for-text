@@ -1,0 +1,296 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <!--
+
+  	Serious Face by nodethirtythree + Templated.org
+  	http://templated.org/ | @templatedorg
+  	Released under the Creative Commons Attribution 3.0 License.
+  	
+  	Note from the author: These templates take quite a bit of time to conceive,
+  	design, and finally code. So please, support our efforts by respecting our
+  	license: keep our footer credit links intact so people can find out about us
+  	and what we do. It's the right thing to do, and we'll love you for it :)
+  	
+  -->
+  <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+      <style>
+
+  body {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+
+
+
+  .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+
+.sentimentValue
+{
+  font-size: 30px;
+  padding-top: 50px;
+}
+
+
+  </style>
+
+
+ 
+      
+      <!--<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+      <script src="http://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>-->
+      
+                  
+   <script type='text/javascript' src='js/jquery-1.8.3.js'></script>
+
+
+
+  <script src="js/d3.v3.js"></script>
+          <meta name="keywords" content="" />
+          <meta name="description" content="" />
+          <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
+    <meta http-equiv="Content-Script-Type" content="text/javascript">  
+  		<title>SOFIA</title>
+          <link href="http://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css" />
+  		<link rel="stylesheet" type="text/css" href="css/style.css" />
+  	   <link href="css/bootstrap.min.css" rel="stylesheet">
+      </head>
+      <body>
+  		<div id="bg">
+  			<div id="outer">
+  				<div id="header">
+  					<div id="logo">
+  						<h1>
+  							<a href="#">SOFIA</a>
+  						</h1>
+  					</div>
+  					
+  					<div id="nav">
+  						<ul>
+  							<li class="first active">
+  								<a href="#">Inicio</a>
+  							</li>
+  							<li>
+  								<a href="#">Fuentes de Datos</a>
+  							</li>
+  							<li>
+  								<a href="#">Datos Históricos</a>
+  							</li>
+  							<li>
+  								<a href="#">Acerca de</a>
+  							</li>
+  							<li>
+  								<a href="#">Blog</a>
+  							</li>
+  							
+  						</ul>
+  						<br class="clear" />
+  					</div>
+  				</div>
+  				<div id="banner">
+  					<img src="images/header2.jpg" width="932" height="172" alt="" />
+  				</div>
+  				<div id="main">
+  					
+  					<div id="content">
+  						
+              <div id="slider-range"></div>
+<span id="time"></span>
+<link href="base/jquery-ui.css" rel="stylesheet" />
+<link href="base/jquery.ui.all.css" rel="stylesheet" />
+<script src="js/jquery-1.7.1" type="text/javascript"></script>
+<script src="js/jquery-ui-1.8.18.min.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+
+
+
+    var ini = new Date(2014,01,01,00,00).getTime();
+    var fini = new Date(2014, 02, 01, 00, 00).getTime() ;
+
+    $("#slider-range").slider({
+        range: true,
+        min: ini,
+        max: fini,
+        values: [540, 1020],
+        slide: slideTime
+    });
+    function slideTime(event, ui) {
+        var val0 = $("#slider-range").slider("values", 0),
+            val1 = $("#slider-range").slider("values", 1),
+            year0 = new Date(val0).getFullYear(),
+            month0 = new Date(val0).getMonth(),
+            day0 = new Date(val0).getDate(),
+            minutes0 = parseInt(val0 % 60, 10),
+            hours0 = parseInt(val0 / 60 % 24, 10),
+            year1 = new Date(val1).getFullYear(),
+            month1 = new Date(val1).getMonth(),
+            day1 = new Date(val1).getDate(),
+            minutes1 = parseInt(val1 % 60, 10),
+            hours1 = parseInt(val1 / 60 % 24, 10);
+
+        startTime = getTime(year0,month0,day0,hours0, minutes0);
+        endTime = getTime(year1, month1, day1, hours1, minutes1);
+        $("#time").text(startTime + ' - ' + endTime);
+    }
+    function getTime(year,month, day, hours, minutes) {
+        var time = null;
+        minutes = minutes + "";
+        if (hours < 12) {
+            time = "AM";
+        }
+        else {
+            time = "PM";
+        }
+        if (hours == 0) {
+            hours = 12;
+        }
+        if (hours > 12) {
+            hours = hours - 12;
+        }
+        if (minutes.length == 1) {
+            minutes = "0" + minutes;
+        }
+        return year + "/" + month + "/" + day + " " + hours + ":" + minutes + " " + time;
+    }
+    slideTime();
+</script>
+
+        
+
+<div class="row clearfix"> 
+                
+      <div class="col-md-3 column">
+        <p>
+          <!--Sentiment Visualization, <strong>Sentiment Visualizations</strong>. Aliquam eget sapien sapien. <em>Morbi commodo sodales nisi id sodales.</em> Proin massa magna,nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu.</small>-->
+                                  <strong>Noticias en Español</strong>
+        </p>
+                          <div class="list-group">
+                              <a class="list-group-item active">
+                                Huffington Post
+                                  </a>
+                              <div id="placeholderHP"></div>
+                          </div>
+                          
+                         
+                          
+                          <!--<div id="chart"></div>
+                          <div id="pieCombinado"></div>-->
+                      </div>
+         
+      <div class="col-md-3 column">
+          <strong>Noticias en Ingles</strong>
+                           <div class="list-group" style="height:500px; width:500px;">
+                              <a class="list-group-item active">
+                                
+                                  </a>
+                              <div id="dbpedia"></div>
+                          </div>
+                          <hr align="center" style=" display: block; margin: 0 auto; color: blue; background-color: blue; height: 2px; width: 90%">   
+        <p>
+          <!--Map Visualization, <strong>Map Visualizations</strong>. Aliquam eget sapien sapien. <em>Morbi commodo sodales nisi id sodales.</em> Proin massa magna,nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu.</small>-->
+                                  <strong>Map Visualizations</strong>
+        </p>       
+                          <div id="map_canvas" style="height:500px; width:500px; margin: 0px; padding: 200px; border:1px snow;"></div>
+                          <hr align="center" style=" display: block; margin: 0 auto; color: blue; background-color: blue; height: 2px; width: 90%">                                                
+                          
+
+///////
+                          <div  style="height:250px; width:500px; margin: 0px;">
+                            <div class="list-group">
+                              <a class="list-group-item active">
+                                Equivalentes
+
+
+                                  </a>
+                              <div id="equivalentediv"></div>
+                          </div>
+
+                          </div>
+
+
+/////////////////////
+
+
+
+                          
+                            
+                              <div class="list-group" style="height:250px; width:500px;">
+                              <a class="list-group-item active">
+                                Relacionadas
+                                  </a>
+                              <div id="relacionadodiv"></div>
+                          </div>
+
+      </div>
+
+
+</div>
+
+
+          </body>	
+
+
+
+
+
+
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+</style>
+
+                  Eje, unidades, comparacion.
+                </p>
+              </div>
+              <br class="clear" />
+            </div>
+            <br class="clear" />
+          </div>
+        </div>
+        <div id="copyright">
+          &copy; Your Site Name | Design: <a href="http://templated.org/free-css-templates/seriousface/">Serious Face</a> by <a href="http://nodethirtythree.com">nodethirtythree</a> + <a href="http://templated.org/">Templated.org</a>
+        </div>
+      </div>
+
+
+
+      </body>
+  </html>

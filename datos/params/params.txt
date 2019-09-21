@@ -1,0 +1,22 @@
+#path to: 1. RSS feeds URLs 2. COmpanies to be observed within the stock market 3. Google Trends File (.csv) 
+#4. URL of the MongoDb to be used (if empty localhost will be used),
+#5. list with feeds this instance will collect, separated by ; GoogleTrends;RSS;TwitterEnglish;TwitterSpanish;StockTracker
+#6. boolean defining wheter or not this instance will generate predictions
+#7. String with the twitter credentials separated by ; to be used in the tweets collection:
+# consumerkey;consumersecret;accesstoken;accesstokensecret
+#8. boolean defining whether this is a test run and the app should run regardless of the current hour
+# Note that for a single instance application all boolean parameters should be set to true
+#true;true;true;true;true    false;false;false;false;false
+#
+#/root/datos/fuentes.txt
+#/root/datos/companies.txt
+#/root/datos/GoogleTrends/report.csv
+#10.0.2.40
+./datos/params/fuentes.txt
+./datos/params/companies.txt
+./datos/params/report.csv
+localhost
+false;false;true;false;false
+false
+KHQLpfZ9BubeceOmnwCIudOoM;Vrv8gTikc328Kqbz9mvw7rfwG5mCJq4j0T8xql2zDXu80hD0AW;59496360-NbgXjNHdYDj5D0wwJ1xlMeaOUhK1I73qt6GZTbJ73;hCpFxsw97NtxsGgEJGZnHEWMAw6puXchIn7ZylrKlAsaR
+true

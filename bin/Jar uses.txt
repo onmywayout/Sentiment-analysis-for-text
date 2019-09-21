@@ -1,0 +1,13 @@
+Lib References:
+
+AIAIOO: spanish model training api
+commons* : Apache Utils. Used in APi training
+Http*Ñ : Apache Utils. Used in APi training
+jxl : excel reader, used in Stock fetching
+Mongo-java: Connection to mongo DB
+org.json: Used troughout the solution
+Stanford* : Sentiment analyzer for english 
+twitter 4j: used for feteching twitter data, in TwitterStreamCollector
+unirest: easily make post request to APi websites (mashable API)
+weka: for language model training (not used)
+xom: Used in stanfor sentiment analysis
